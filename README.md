@@ -1,8 +1,8 @@
+[![Build Status](https://travis-ci.org/IndraGunawan/rubyq.svg?branch=master)](https://travis-ci.org/IndraGunawan/rubyq)
+
 # Rubyq
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubyq`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This library is for building simple query strings via an object oriented
 
 ## Installation
 
@@ -22,7 +22,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'rubyq'
+
+query_builder = Rubyq::QueryBuilder.new
+
+# Select
+query_builder.select('id').from('my_table').where('id = 1')
+# will output: SELECT id FROM my_table WHERE id = 1
+
+# Update
+query_builder.update('my_table').set('name', 'newname').where('id = 1')
+# will output: UPDATE my_table SET name = 'newname' WHERE id = 1
+
+# Delete
+query_builder.delete('my_table').where('id = 1')
+# will output: DELETE my_table WHERE id = 1
+```
 
 ## Development
 
@@ -32,7 +48,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rubyq.
+Bug reports and pull requests are welcome on GitHub at https://github.com/IndraGunawan/rubyq.
 
 ## License
 
